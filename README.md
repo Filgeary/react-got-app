@@ -6,4 +6,5 @@
 
 ## What I've learned
 
-> add info later
+- Fetch API, Adapter
+- Spinner, Error Message
