@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Api from '../../services/api'
 import Spinner from '../spinner/spinner'
+import ErrorMessage from '../errorMessage/errorMessage'
 import './randomChar.css'
 
 export default class RandomChar extends Component {
@@ -19,10 +20,16 @@ export default class RandomChar extends Component {
       culture: 'Unknown',
     },
     isLoading: true,
+    isError: false,
   }
 
   loadCharHandler = char => {
     this.setState({ char, isLoading: false })
+  }
+
+  errorHandler = err => {
+    this.setState({ isError: true })
+    console.error(err)
   }
 
   updateChar() {
@@ -31,17 +38,17 @@ export default class RandomChar extends Component {
     this.api
       .getCharacter(id)
       .then(this.loadCharHandler)
-      .catch(err => console.error(err))
-      .finally(console.log(id)) // TODO: remove later
+      .catch(err => this.errorHandler(err))
   }
 
   render() {
     const { name, gender, born, died, culture } = this.state.char
-    const { isLoading } = this.state
+    const { isLoading, isError } = this.state
 
     return (
       <div className="random-block rounded">
-        {isLoading ? <Spinner /> : null}
+        {isLoading && !isError ? <Spinner /> : null}
+        {isError ? <ErrorMessage /> : null}
 
         <h3 className="random-block-title">
           Random Character: &nbsp;

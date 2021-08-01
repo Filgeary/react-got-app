@@ -1,0 +1,16 @@
+.error-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  background-color: hsla(0, 0%, 0%, 0.9);
+}
+.error-message-text {
+  margin: auto;
+  color: white;
+}
