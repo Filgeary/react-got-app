@@ -1,3 +1,5 @@
+import Adapter from './adapter'
+
 export default class Api {
   constructor() {
     this._apiBase = 'https://www.anapioficeandfire.com/api'
@@ -12,27 +14,33 @@ export default class Api {
     return await res.json()
   }
 
-  getAllBooks() {
-    return this._getDataJSON(`/books/`)
+  async getAllBooks() {
+    const data = await this._getDataJSON(`/books/`)
+    return data.map(Adapter.getBook())
   }
 
-  getBook(id) {
-    return this._getDataJSON(`/books/${id}/`)
+  async getBook(id) {
+    const data = await this._getDataJSON(`/books/${id}/`)
+    return Adapter.getBook(data)
   }
 
-  getAllCharacters() {
-    return this._getDataJSON(`/characters?page=5&pageSize=10`)
+  async getAllCharacters() {
+    const data = await this._getDataJSON(`/characters?page=5&pageSize=10`)
+    return data.map(Adapter.getChar())
   }
 
-  getCharacter(id) {
-    return this._getDataJSON(`/characters/${id}`)
+  async getCharacter(id) {
+    const data = await this._getDataJSON(`/characters/${id}`)
+    return Adapter.getChar(data)
   }
 
-  getAllHouses() {
-    return this._getDataJSON(`/houses/`)
+  async getAllHouses() {
+    const data = await this._getDataJSON(`/houses/`)
+    return data.map(Adapter.getHouse())
   }
 
-  getHouse(id) {
-    return this._getDataJSON(`/houses/${id}/`)
+  async getHouse(id) {
+    const data = await this._getDataJSON(`/houses/${id}/`)
+    return Adapter.getHouse(data)
   }
 }

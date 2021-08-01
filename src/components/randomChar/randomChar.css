@@ -1,12 +1,24 @@
 .random-block {
-  background-color: #fff;
-  padding: 25px 25px 15px 25px;
+  position: relative;
   margin-bottom: 40px;
+  padding: 35px;
+  background-color: #fff;
+  border-top: 5px solid #007bff;
 }
-.random-block h4 {
+.random-block-title {
   margin-bottom: 20px;
   text-align: center;
 }
+.random-block-title-name {
+  display: inline-block;
+  padding: 5px 30px;
+  color: #fff;
+  background-color: #007bff;
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+}
 .term {
   font-weight: bold;
+}
+.random-block li {
+  border-bottom: 1px solid #007bff;
 }
