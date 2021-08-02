@@ -1,22 +1,36 @@
-.item-list {
-  border-radius: 0 0 0.25rem 0.25rem !important;
+.item-list__wrapper {
+  position: relative;
+  min-height: 300px;
 }
-.item-list-title {
+
+.item-list {
+  border-radius: 0 !important;
+}
+
+.item-list__title {
   margin-bottom: 0;
-  padding: 16px 30px;
+  padding: 12px 30px;
   text-align: center;
   font-style: italic;
   color: #fff;
   background-color: #007bff;
   border-radius: 0.25rem 0.25rem 0 0;
 }
+
 .item-list .list-group-item {
-  padding: 16px 30px;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 30px;
   cursor: pointer;
 }
+
 .item-list .list-group-item:hover,
 .item-list .list-group-item:focus,
 .item-list .list-group-item:active {
   background-color: hsl(0, 0%, 90%);
   border-left: 5px solid #007bff;
+}
+
+.item-list__control--refresh {
+  border-radius: 0 0 0.25rem 0.25rem !important;
 }
