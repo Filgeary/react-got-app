@@ -5,7 +5,7 @@ export default class CharDetails extends Component {
   render() {
     return (
       <div className="char-details rounded">
-        <h4>John Snow</h4>
+        <h3 className="char-details-title">John Snow</h3>
         <ul className="list-group list-group-flush">
           <li className="list-group-item d-flex justify-content-between">
             <span className="term">Gender</span>
