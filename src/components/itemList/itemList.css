@@ -15,4 +15,5 @@
 .item-list .list-group-item:focus,
 .item-list .list-group-item:active {
   background-color: hsl(0, 0%, 90%);
+  border-left: 5px solid #007bff;
 }
