@@ -1,12 +1,28 @@
 .char-details {
-  background-color: #fff;
-  padding: 25px 25px 15px 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 40px;
+  padding: 25px;
+  background-color: #fff;
+  border-top: 5px solid #007bff;
 }
 
-.char-details h4 {
+.char-details__title {
+  display: inline-block;
+  margin: 0 auto;
   margin-bottom: 20px;
+  padding: 5px 30px;
   text-align: center;
+  font-style: italic;
+  color: #fff;
+  background-color: #007bff;
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+}
+
+.char-details .list-group-item {
+  gap: 20px;
+  border-bottom: 1px solid #007bff;
 }
 
 .select-error {

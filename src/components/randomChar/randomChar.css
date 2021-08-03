@@ -1,24 +1,32 @@
 .random-block {
   position: relative;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 40px;
-  padding: 35px;
+  padding: 30px;
   background-color: #fff;
   border-top: 5px solid #007bff;
 }
-.random-block-title {
+.random-block__title {
   margin-bottom: 20px;
   text-align: center;
 }
-.random-block-title-name {
+.random-block__title-name {
   display: inline-block;
   padding: 5px 30px;
   color: #fff;
   background-color: #007bff;
   clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
 }
+.random-block .list-group {
+  margin-bottom: 20px;
+}
 .term {
   font-weight: bold;
 }
 .random-block li {
   border-bottom: 1px solid #007bff;
+}
+.random-block__control--next-char {
+  margin-left: auto;
 }

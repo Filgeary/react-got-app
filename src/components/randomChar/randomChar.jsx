@@ -5,10 +5,6 @@ import ErrorMessage from '../errorMessage/errorMessage'
 import './randomChar.css'
 
 export default class RandomChar extends Component {
-  constructor() {
-    super()
-    this.updateChar()
-  }
   api = new Api()
 
   state = {
@@ -23,7 +19,7 @@ export default class RandomChar extends Component {
     isError: false,
   }
 
-  loadCharHandler = char => {
+  charLoadedHandler = char => {
     this.setState({ char, isLoading: false })
   }
 
@@ -32,13 +28,18 @@ export default class RandomChar extends Component {
     console.error(err)
   }
 
-  updateChar() {
+  updateCharHandler = () => {
     const id = Math.floor(Math.random() * 1150)
+    this.setState({ isLoading: true })
 
     this.api
       .getCharacter(id)
-      .then(this.loadCharHandler)
+      .then(data => this.charLoadedHandler(data))
       .catch(err => this.errorHandler(err))
+  }
+
+  componentDidMount() {
+    this.updateCharHandler()
   }
 
   render() {
@@ -50,10 +51,11 @@ export default class RandomChar extends Component {
         {isLoading && !isError ? <Spinner /> : null}
         {isError ? <ErrorMessage /> : null}
 
-        <h3 className="random-block-title">
+        <h3 className="random-block__title">
           Random Character: &nbsp;
-          <i className="random-block-title-name">{name || 'Unknown'}</i>
+          <i className="random-block__title-name">{name || 'Unknown'}</i>
         </h3>
+
         <ul className="list-group list-group-flush">
           <li className="list-group-item d-flex justify-content-between">
             <span className="term">Gender </span>
@@ -72,6 +74,14 @@ export default class RandomChar extends Component {
             <span>{culture || 'Unknown'}</span>
           </li>
         </ul>
+
+        <button
+          type="button"
+          className="random-block__control--next-char btn btn-secondary btn-lg"
+          onClick={this.updateCharHandler}
+        >
+          Next Character
+        </button>
       </div>
     )
   }

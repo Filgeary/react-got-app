@@ -16,7 +16,7 @@ export default class Api {
 
   async getAllBooks() {
     const data = await this._getDataJSON(`/books/`)
-    return data.map(Adapter.getBook())
+    return data.map(Adapter.getBook)
   }
 
   async getBook(id) {
@@ -24,9 +24,11 @@ export default class Api {
     return Adapter.getBook(data)
   }
 
-  async getAllCharacters() {
-    const data = await this._getDataJSON(`/characters?page=5&pageSize=10`)
-    return data.map(Adapter.getChar())
+  async getAllCharacters(pageNumber = 10, pageSizeCount = 10) {
+    const data = await this._getDataJSON(
+      `/characters?page=${pageNumber}&pageSize=${pageSizeCount}`,
+    )
+    return data.map(Adapter.getChar)
   }
 
   async getCharacter(id) {
@@ -36,7 +38,7 @@ export default class Api {
 
   async getAllHouses() {
     const data = await this._getDataJSON(`/houses/`)
-    return data.map(Adapter.getHouse())
+    return data.map(Adapter.getHouse)
   }
 
   async getHouse(id) {
