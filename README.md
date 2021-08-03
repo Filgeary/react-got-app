@@ -7,4 +7,5 @@
 ## What I've learned
 
 - Fetch API, Adapter
-- Spinner, Error Message
+- Spinner, Error Message patterns
+- Component Lifecycle
