@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import './itemList.css'
+
+// components
 import Api from '../../services/api'
 import Spinner from '../spinner/spinner'
 import ErrorMessage from '../errorMessage/errorMessage'
-import './itemList.css'
 
 export default class ItemList extends Component {
   api = new Api()
@@ -54,9 +56,12 @@ export default class ItemList extends Component {
                       className="list-group-item"
                       tabIndex="0"
                       key={char.name + char.id}
+                      onClick={() => this.props.onChangeCharId(char.id)}
                     >
                       <span>{char.name || 'Unknown'}</span>
-                      <i>{char.id}</i>
+                      <i>
+                        <small>{char.id}</small>
+                      </i>
                     </li>
                   )
                 })
