@@ -1,6 +1,13 @@
 .item-list__wrapper {
   position: relative;
+  display: flex;
+  flex-direction: column;
   min-height: 300px;
+  padding: 20px 0;
+  padding-bottom: 0;
+  background-color: #fff;
+  border-top: 5px solid #007bff;
+  border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .item-list {
@@ -8,13 +15,16 @@
 }
 
 .item-list__title {
-  margin-bottom: 0;
-  padding: 12px 30px;
+  display: inline-block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 5px 30px;
   text-align: center;
   font-style: italic;
   color: #fff;
   background-color: #007bff;
   border-radius: 0.25rem 0.25rem 0 0;
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
 }
 
 .item-list .list-group-item {

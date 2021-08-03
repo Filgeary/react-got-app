@@ -67,15 +67,14 @@ export default class ItemList extends Component {
                 })
               : null}
           </ul>
+          <button
+            type="button"
+            className="item-list__control--refresh btn btn-secondary btn-lg "
+            onClick={this.updateCharsHandler}
+          >
+            Refresh
+          </button>
         </div>
-
-        <button
-          type="button"
-          className="item-list__control--refresh btn btn-secondary btn-lg btn-block"
-          onClick={this.updateCharsHandler}
-        >
-          Refresh
-        </button>
       </>
     )
   }
