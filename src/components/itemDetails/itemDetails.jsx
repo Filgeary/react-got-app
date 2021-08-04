@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './charDetails.css'
+import './itemDetails.css'
 
 // components
 import Api from '../../services/api'
@@ -10,7 +10,7 @@ export default class CharDetails extends Component {
   api = new Api()
 
   state = {
-    char: {
+    item: {
       name: 'Unknown',
       gender: 'Unknown',
       born: 'Unknown',
@@ -21,8 +21,8 @@ export default class CharDetails extends Component {
     isError: false,
   }
 
-  charLoadedHandler = char => {
-    this.setState({ char, isLoading: false })
+  itemLoadedHandler = item => {
+    this.setState({ item, isLoading: false })
   }
 
   errorHandler = err => {
@@ -30,37 +30,37 @@ export default class CharDetails extends Component {
     console.error(err)
   }
 
-  updateChar() {
-    if (!this.props.charId) return
+  updateItem() {
+    if (!this.props.itemId) return
 
     this.setState({ isLoading: true })
 
     this.api
-      .getCharacter(this.props.charId)
-      .then(data => this.charLoadedHandler(data))
+      .getCharacter(this.props.itemId)
+      .then(data => this.itemLoadedHandler(data))
       .catch(err => this.errorHandler(err))
   }
 
   componentDidMount() {
-    this.updateChar()
+    this.updateItem()
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.charId !== prevProps.charId) {
-      this.updateChar()
+    if (this.props.itemId !== prevProps.itemId) {
+      this.updateItem()
     }
   }
 
   render() {
-    const { name, gender, born, died, culture } = this.state.char
+    const { name, gender, born, died, culture } = this.state.item
     const { isLoading, isError } = this.state
 
     return (
-      <div className="char-details rounded">
+      <div className="item-details rounded">
         {isLoading && !isError ? <Spinner /> : null}
         {isError ? <ErrorMessage /> : null}
 
-        <h3 className="char-details__title">{name || 'Unknown'}</h3>
+        <h3 className="item-details__title">{name || 'Unknown'}</h3>
         <ul className="list-group list-group-flush">
           <li className="list-group-item d-flex justify-content-between">
             <span className="term">Gender</span>

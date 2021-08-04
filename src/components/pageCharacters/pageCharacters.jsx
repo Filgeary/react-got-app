@@ -3,7 +3,7 @@ import { Col, Row } from 'reactstrap'
 
 // components
 import ItemList from '../itemList/itemList'
-import CharDetails from '../charDetails/charDetails'
+import ItemDetails from '../itemDetails/itemDetails'
 
 class PageCharacters extends Component {
   state = {
@@ -23,7 +23,7 @@ class PageCharacters extends Component {
           </Col>
 
           <Col md="6">
-            <CharDetails charId={this.state.charId} />
+            <ItemDetails itemId={this.state.charId} />
           </Col>
         </Row>
       </>

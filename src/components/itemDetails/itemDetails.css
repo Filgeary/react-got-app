@@ -1,4 +1,4 @@
-.char-details {
+.item-details {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   border-top: 5px solid #007bff;
 }
 
-.char-details__title {
+.item-details__title {
   display: inline-block;
   margin: 0 auto;
   margin-bottom: 20px;
@@ -20,7 +20,7 @@
   clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
 }
 
-.char-details .list-group-item {
+.item-details .list-group-item {
   gap: 20px;
   border-bottom: 1px solid #007bff;
 }
