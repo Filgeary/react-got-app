@@ -19,7 +19,7 @@ class PageCharacters extends Component {
       <>
         <Row>
           <Col md="6">
-            <ItemList onChangeCharId={this.changeCharIdHandler} />
+            <ItemList onItemSelected={this.changeCharIdHandler} />
           </Col>
 
           <Col md="6">

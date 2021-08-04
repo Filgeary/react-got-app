@@ -10,13 +10,13 @@ export default class ItemList extends Component {
   api = new Api()
 
   state = {
-    charsList: null,
+    itemList: null,
     isLoading: true,
     isError: false,
   }
 
-  charsLoadedHandler = charsList => {
-    this.setState({ charsList, isLoading: false })
+  itemsLoadedHandler = itemList => {
+    this.setState({ itemList, isLoading: false })
   }
 
   errorHandler = err => {
@@ -24,22 +24,22 @@ export default class ItemList extends Component {
     console.error(err)
   }
 
-  updateCharsHandler = () => {
+  updateItemsHandler = () => {
     const pageNumber = Math.floor(Math.random() * 225)
     this.setState({ isLoading: true })
 
     this.api
       .getAllCharacters(pageNumber, 5)
-      .then(data => this.charsLoadedHandler(data))
+      .then(data => this.itemsLoadedHandler(data))
       .catch(err => this.errorHandler(err))
   }
 
   componentDidMount() {
-    this.updateCharsHandler()
+    this.updateItemsHandler()
   }
 
   render() {
-    const { charsList, isLoading, isError } = this.state
+    const { itemList, isLoading, isError } = this.state
 
     return (
       <>
@@ -49,18 +49,18 @@ export default class ItemList extends Component {
 
           <h3 className="item-list__title">Pick a Hero</h3>
           <ul className="item-list list-group">
-            {charsList
-              ? charsList.map(char => {
+            {itemList
+              ? itemList.map(item => {
                   return (
                     <li
                       className="list-group-item"
                       tabIndex="0"
-                      key={char.name + char.id}
-                      onClick={() => this.props.onChangeCharId(char.id)}
+                      key={item.name + item.id}
+                      onClick={() => this.props.onItemSelected(item.id)}
                     >
-                      <span>{char.name || 'Unknown'}</span>
+                      <span>{item.name || 'Unknown'}</span>
                       <i>
-                        <small>{char.id}</small>
+                        <small>{item.id}</small>
                       </i>
                     </li>
                   )
@@ -69,8 +69,8 @@ export default class ItemList extends Component {
           </ul>
           <button
             type="button"
-            className="item-list__control--refresh btn btn-secondary btn-lg "
-            onClick={this.updateCharsHandler}
+            className="item-list__control--refresh btn btn-secondary btn-lg"
+            onClick={this.updateItemsHandler}
           >
             Refresh
           </button>
