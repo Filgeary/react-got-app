@@ -28,7 +28,12 @@ class PageCharacters extends Component {
     )
 
     const itemDetailsBlock = (
-      <ItemDetails itemId={this.state.charId} getData={this.api.getCharacter}>
+      <ItemDetails
+        itemId={this.state.charId}
+        getData={this.api.getCharacter}
+        dataValue="char"
+        title="Select a Hero in left panel"
+      >
         <Field field="gender" label="Gender" />
         <Field field="born" label="Born" />
         <Field field="died" label="Died" />

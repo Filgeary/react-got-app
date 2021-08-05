@@ -55,19 +55,16 @@ export default class ItemDetails extends Component {
   render() {
     const { item } = this.state
     const { isLoading, isError } = this.state
+    const titleClass = !item.name ? 'item-details__title--unselected' : ''
 
     return (
       <div className="item-details rounded">
         {isLoading && !isError ? <Spinner /> : null}
         {isError ? <ErrorMessage /> : null}
 
-        {Object.keys(item).length > 0 ? (
-          <h3 className="item-details__title">{item.name || 'Unknown'}</h3>
-        ) : (
-          <h3 className="item-details__title item-details__title--unselected">
-            Select item in left panel
-          </h3>
-        )}
+        <h3 className={`item-details__title ${titleClass}`}>
+          {item.name || this.props.title}
+        </h3>
 
         <ul className="list-group list-group-flush">
           {React.Children.map(this.props.children, child => {
