@@ -3,14 +3,14 @@ import Api from '../../services/api'
 
 // components
 import ItemList from '../itemList/itemList'
-import ItemDetails from '../itemDetails/itemDetails'
+import ItemDetails, { Field } from '../itemDetails/itemDetails'
 import RowBlock from '../rowBlock/rowBlock'
 
 class PageCharacters extends Component {
   api = new Api()
 
   state = {
-    charId: null,
+    charId: '',
   }
 
   changeCharIdHandler = id => {
@@ -27,7 +27,14 @@ class PageCharacters extends Component {
       />
     )
 
-    const itemDetailsBlock = <ItemDetails itemId={this.state.charId} />
+    const itemDetailsBlock = (
+      <ItemDetails itemId={this.state.charId} getData={this.api.getCharacter}>
+        <Field field="gender" label="Gender" />
+        <Field field="born" label="Born" />
+        <Field field="died" label="Died" />
+        <Field field="culture" label="Culture" />
+      </ItemDetails>
+    )
 
     return <RowBlock left={itemListBlock} right={itemDetailsBlock} />
   }

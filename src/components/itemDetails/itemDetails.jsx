@@ -1,23 +1,27 @@
 import React, { Component } from 'react'
 import './itemDetails.css'
+import Api from '../../services/api'
 
 // components
-import Api from '../../services/api'
 import Spinner from '../spinner/spinner'
 import ErrorMessage from '../errorMessage/errorMessage'
 
-export default class CharDetails extends Component {
+// render function
+export const Field = ({ item, field, label }) => {
+  return (
+    <li className="list-group-item d-flex justify-content-between">
+      <span className="term">{label}</span>
+      <span>{item[field] || 'Unknown'}</span>
+    </li>
+  )
+}
+
+export default class ItemDetails extends Component {
   api = new Api()
 
   state = {
-    item: {
-      name: 'Unknown',
-      gender: 'Unknown',
-      born: 'Unknown',
-      died: 'Unknown',
-      culture: 'Unknown',
-    },
-    isLoading: true,
+    item: {},
+    isLoading: false,
     isError: false,
   }
 
@@ -52,7 +56,7 @@ export default class CharDetails extends Component {
   }
 
   render() {
-    const { name, gender, born, died, culture } = this.state.item
+    const { item } = this.state
     const { isLoading, isError } = this.state
 
     return (
@@ -60,24 +64,18 @@ export default class CharDetails extends Component {
         {isLoading && !isError ? <Spinner /> : null}
         {isError ? <ErrorMessage /> : null}
 
-        <h3 className="item-details__title">{name || 'Unknown'}</h3>
+        {Object.keys(item).length > 0 ? (
+          <h3 className="item-details__title">{item.name || 'Unknown'}</h3>
+        ) : (
+          <h3 className="item-details__title item-details__title--unselected">
+            Select item in left panel
+          </h3>
+        )}
+
         <ul className="list-group list-group-flush">
-          <li className="list-group-item d-flex justify-content-between">
-            <span className="term">Gender</span>
-            <span>{gender || 'Unknown'}</span>
-          </li>
-          <li className="list-group-item d-flex justify-content-between">
-            <span className="term">Born</span>
-            <span>{born || 'Unknown'}</span>
-          </li>
-          <li className="list-group-item d-flex justify-content-between">
-            <span className="term">Died</span>
-            <span>{died || 'Unknown'}</span>
-          </li>
-          <li className="list-group-item d-flex justify-content-between">
-            <span className="term">Culture</span>
-            <span>{culture || 'Unknown'}</span>
-          </li>
+          {React.Children.map(this.props.children, child => {
+            return React.cloneElement(child, { item })
+          })}
         </ul>
       </div>
     )
