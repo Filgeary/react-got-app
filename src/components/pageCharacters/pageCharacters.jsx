@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
-import { Col, Row } from 'reactstrap'
+import Api from '../../services/api'
 
 // components
 import ItemList from '../itemList/itemList'
 import ItemDetails from '../itemDetails/itemDetails'
+import RowBlock from '../rowBlock/rowBlock'
 
 class PageCharacters extends Component {
+  api = new Api()
+
   state = {
-    charId: 583,
+    charId: null,
   }
 
   changeCharIdHandler = id => {
@@ -15,19 +18,18 @@ class PageCharacters extends Component {
   }
 
   render() {
-    return (
-      <>
-        <Row>
-          <Col md="6">
-            <ItemList onItemSelected={this.changeCharIdHandler} />
-          </Col>
-
-          <Col md="6">
-            <ItemDetails itemId={this.state.charId} />
-          </Col>
-        </Row>
-      </>
+    const itemListBlock = (
+      <ItemList
+        onItemSelected={this.changeCharIdHandler}
+        getData={this.api.getAllCharacters}
+        dataValue="allChars"
+        title="Pick a Hero"
+      />
     )
+
+    const itemDetailsBlock = <ItemDetails itemId={this.state.charId} />
+
+    return <RowBlock left={itemListBlock} right={itemDetailsBlock} />
   }
 }
 
