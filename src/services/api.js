@@ -25,9 +25,9 @@ export default class Api {
     return this.adapter.getBook(data)
   }
 
-  getAllCharacters = async (pageNumber = 10, pageSizeCount = 10) => {
+  getAllCharacters = async (pageNumber = 55, pageSizeCount = 10) => {
     const data = await this._getDataJSON(
-      `/characters?page=${pageNumber}&pageSize=${pageSizeCount}`,
+      `/characters?page=${pageNumber || 55}&pageSize=${pageSizeCount || 10}`,
     )
     return data.map(this.adapter.getChar)
   }
