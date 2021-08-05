@@ -12,7 +12,7 @@ https://www.anapioficeandfire.com/api/books
 ###
 https://www.anapioficeandfire.com/api/books/12
 
-### CHARS / Max 2138
+### CHARS / Max 2138 / Full name 1136
 ######################################################
 
 https://www.anapioficeandfire.com/api/characters
@@ -21,7 +21,7 @@ https://www.anapioficeandfire.com/api/characters
 https://anapioficeandfire.com/api/characters/583
 
 ###
-https://www.anapioficeandfire.com/api/characters?page=214&pageSize=10
+https://www.anapioficeandfire.com/api/characters?page=114&pageSize=10
 
 ### HOUSES Max 444
 ######################################################
