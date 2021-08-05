@@ -1,0 +1,32 @@
+# use REST Client VSCode extension
+
+# Game of Thrones API
+
+https://www.anapioficeandfire.com/api
+
+### BOOKS
+######################################################
+
+https://www.anapioficeandfire.com/api/books
+
+###
+https://www.anapioficeandfire.com/api/books/1
+
+### CHARS
+######################################################
+
+https://www.anapioficeandfire.com/api/characters
+
+###
+https://anapioficeandfire.com/api/characters/583
+
+###
+https://www.anapioficeandfire.com/api/characters?page=55&pageSize=10
+
+### HOUSES
+######################################################
+
+https://www.anapioficeandfire.com/api/houses
+
+###
+https://www.anapioficeandfire.com/api/houses/17
