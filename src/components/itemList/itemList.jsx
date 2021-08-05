@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import './itemList.css'
-import Api from '../../services/api'
 
 // components
 import Spinner from '../spinner/spinner'
 import ErrorMessage from '../errorMessage/errorMessage'
 
 export default class ItemList extends Component {
-  api = new Api()
-
   state = {
     itemList: null,
     isLoading: true,

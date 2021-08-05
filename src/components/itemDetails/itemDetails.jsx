@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './itemDetails.css'
-import Api from '../../services/api'
 
 // components
 import Spinner from '../spinner/spinner'
@@ -17,8 +16,6 @@ export const Field = ({ item, field, label }) => {
 }
 
 export default class ItemDetails extends Component {
-  api = new Api()
-
   state = {
     item: {},
     isLoading: false,
@@ -39,8 +36,8 @@ export default class ItemDetails extends Component {
 
     this.setState({ isLoading: true })
 
-    this.api
-      .getCharacter(this.props.itemId)
+    this.props
+      .getData(this.props.itemId)
       .then(data => this.itemLoadedHandler(data))
       .catch(err => this.errorHandler(err))
   }
