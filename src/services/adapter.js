@@ -1,5 +1,5 @@
 export default class Adapter {
-  static getChar({ url, name, gender, born, died, culture }) {
+  getChar = ({ url, name, gender, born, died, culture }) => {
     return {
       id: url.match(/\d+$/)[0],
       name,
@@ -10,33 +10,34 @@ export default class Adapter {
     }
   }
 
-  static getHouse({
+  getHouse = ({
     url,
     name,
     region,
+    coatOfArms,
     words,
     titles,
-    overlord,
     ancestralWeapons,
-  }) {
+  }) => {
     return {
       id: url.match(/\d+$/)[0],
       name,
       region,
+      coatOfArms,
       words,
-      titles,
-      overlord,
-      ancestralWeapons,
+      titles: titles.join('\n'),
+      ancestralWeapons: ancestralWeapons.join('\n'),
     }
   }
 
-  static getBook({ url, name, numberOfPages, publisher, released }) {
+  getBook = ({ url, name, authors, numberOfPages, publisher, released }) => {
     return {
       id: url.match(/\d+$/)[0],
       name,
+      authors: authors.join('\n'),
       numberOfPages,
       publisher,
-      released,
+      released: new Date(released).toLocaleDateString(),
     }
   }
 }

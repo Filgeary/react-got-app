@@ -5,6 +5,8 @@ import { Col, Row, Container } from 'reactstrap'
 import Header from '../header/header'
 import RandomChar from '../randomChar/randomChar'
 import PageCharacters from '../pageCharacters/pageCharacters'
+import PageHouses from '../pageHouses/pageHouses'
+import PageBooks from '../pageBooks/pageBooks'
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
         </Row>
 
         <PageCharacters />
+        <PageHouses />
+        <PageBooks />
       </Container>
     </>
   )

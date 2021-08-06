@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
-import { Col, Row } from 'reactstrap'
+import Api from '../../services/api'
 
 // components
 import ItemList from '../itemList/itemList'
-import CharDetails from '../charDetails/charDetails'
+import ItemDetails, { Field } from '../itemDetails/itemDetails'
+import RowBlock from '../rowBlock/rowBlock'
 
 class PageCharacters extends Component {
+  api = new Api()
+
   state = {
-    charId: 583,
+    charId: '',
   }
 
   changeCharIdHandler = id => {
@@ -15,19 +18,30 @@ class PageCharacters extends Component {
   }
 
   render() {
-    return (
-      <>
-        <Row>
-          <Col md="6">
-            <ItemList onChangeCharId={this.changeCharIdHandler} />
-          </Col>
-
-          <Col md="6">
-            <CharDetails charId={this.state.charId} />
-          </Col>
-        </Row>
-      </>
+    const itemListBlock = (
+      <ItemList
+        onItemSelected={this.changeCharIdHandler}
+        getData={this.api.getAllCharacters}
+        dataValue="allChars"
+        title="Pick a Hero"
+      />
     )
+
+    const itemDetailsBlock = (
+      <ItemDetails
+        itemId={this.state.charId}
+        getData={this.api.getCharacter}
+        dataValue="char"
+        title="Select a Hero in left panel"
+      >
+        <Field field="gender" label="Gender" />
+        <Field field="born" label="Born" />
+        <Field field="died" label="Died" />
+        <Field field="culture" label="Culture" />
+      </ItemDetails>
+    )
+
+    return <RowBlock left={itemListBlock} right={itemDetailsBlock} />
   }
 }
 
