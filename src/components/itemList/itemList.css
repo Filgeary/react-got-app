@@ -24,7 +24,7 @@
   color: #fff;
   background-color: #007bff;
   border-radius: 0.25rem 0.25rem 0 0;
-  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+  clip-path: polygon(7% 0%, 100% 0%, 93% 100%, 0% 100%);
 }
 
 .item-list .list-group-item {

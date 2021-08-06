@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Row, Container } from 'reactstrap'
+import { Switch, Route } from 'react-router-dom'
 
 // components
 import Header from '../header/header'
@@ -16,15 +17,25 @@ const App = () => {
       </Container>
 
       <Container>
-        <Row>
-          <Col lg={{ size: 6, offset: 0 }}>
-            <RandomChar />
-          </Col>
-        </Row>
+        <Switch>
+          <Route path="/" exact>
+            <Row>
+              <Col lg={{ size: 8, offset: 2 }}>
+                <RandomChar />
+              </Col>
+            </Row>
+          </Route>
 
-        <PageCharacters />
-        <PageHouses />
-        <PageBooks />
+          <Route path="/characters">
+            <PageCharacters />
+          </Route>
+          <Route path="/houses">
+            <PageHouses />
+          </Route>
+          <Route path="/books">
+            <PageBooks />
+          </Route>
+        </Switch>
       </Container>
     </>
   )
