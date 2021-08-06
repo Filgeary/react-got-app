@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const HeaderBlock = styled.div`
@@ -6,6 +7,7 @@ const HeaderBlock = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 80px;
+  margin-bottom: 20px;
 `
 
 const HeaderTitle = styled.h3`
@@ -30,17 +32,17 @@ const Header = () => {
   return (
     <HeaderBlock>
       <HeaderTitle>
-        <a href="#home">Game of Thrones DB</a>
+        <Link to="/">Game of Thrones DB</Link>
       </HeaderTitle>
       <HeaderLinks>
         <li>
-          <a href="#chars">Characters</a>
+          <Link to="/characters">Characters</Link>
         </li>
         <li>
-          <a href="#houses">Houses</a>
+          <Link to="/houses">Houses</Link>
         </li>
         <li>
-          <a href="#books">Books</a>
+          <Link to="/books">Books</Link>
         </li>
       </HeaderLinks>
     </HeaderBlock>
