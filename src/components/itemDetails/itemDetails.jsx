@@ -9,8 +9,8 @@ import ErrorMessage from '../errorMessage/errorMessage'
 export const Field = ({ item, field, label }) => {
   return (
     <li className="list-group-item d-flex justify-content-between">
-      <span className="term">{label}</span>
-      <span>{item[field] || 'Unknown'}</span>
+      <span className="label">{label}</span>
+      <span className="label-desc">{item[field] || 'Unknown'}</span>
     </li>
   )
 }

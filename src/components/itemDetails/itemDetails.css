@@ -28,4 +28,15 @@
 .item-details .list-group-item {
   gap: 20px;
   border-bottom: 1px solid #007bff;
+  overflow: hidden;
+}
+
+.item-details .label {
+  text-align: left;
+  font-weight: 700;
+}
+
+.item-details .label-desc {
+  text-align: right;
+  white-space: pre-wrap;
 }

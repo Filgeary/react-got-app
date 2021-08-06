@@ -25,10 +25,8 @@ export default class Api {
     return this.adapter.getBook(data)
   }
 
-  getAllCharacters = async (pageNumber = 55, pageSizeCount = 10) => {
-    const data = await this._getDataJSON(
-      `/characters?page=${pageNumber || 55}&pageSize=${pageSizeCount || 10}`,
-    )
+  getAllCharacters = async (pageNumber = 55) => {
+    const data = await this._getDataJSON(`/characters?page=${pageNumber || 55}`)
     return data.map(this.adapter.getChar)
   }
 
@@ -37,8 +35,8 @@ export default class Api {
     return this.adapter.getChar(data)
   }
 
-  getAllHouses = async () => {
-    const data = await this._getDataJSON(`/houses/`)
+  getAllHouses = async (pageNumber = 22) => {
+    const data = await this._getDataJSON(`/houses?page=${pageNumber || 22}`)
     return data.map(this.adapter.getHouse)
   }
 

@@ -14,19 +14,19 @@ export default class Adapter {
     url,
     name,
     region,
+    coatOfArms,
     words,
     titles,
-    overlord,
     ancestralWeapons,
   }) => {
     return {
       id: url.match(/\d+$/)[0],
       name,
       region,
+      coatOfArms,
       words,
-      titles,
-      overlord,
-      ancestralWeapons,
+      titles: titles.join('\n'),
+      ancestralWeapons: ancestralWeapons.join('\n'),
     }
   }
 

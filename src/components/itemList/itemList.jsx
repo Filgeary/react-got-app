@@ -5,6 +5,11 @@ import './itemList.css'
 import Spinner from '../spinner/spinner'
 import ErrorMessage from '../errorMessage/errorMessage'
 
+const randomInt = (min, max) => {
+  const number = min + Math.random() * (max + 1 - min)
+  return Math.floor(number)
+}
+
 export default class ItemList extends Component {
   state = {
     itemList: null,
@@ -25,8 +30,16 @@ export default class ItemList extends Component {
     this.setState({ isLoading: true })
 
     let query = ''
-    if (this.props.dataValue === 'allChars') {
-      query = String(Math.floor(Math.random() * 110))
+
+    switch (this.props.dataValue) {
+      case 'allChars':
+        query = String(Math.floor(randomInt(1, 1136) / 10))
+        break
+      case 'allHouses':
+        query = String(Math.floor(randomInt(1, 444) / 10))
+        break
+      default:
+        query = ''
     }
 
     this.props
@@ -68,7 +81,7 @@ export default class ItemList extends Component {
             : null}
         </ul>
 
-        {this.props.dataValue === 'allChars' ? (
+        {this.props.dataValue === 'allChars' || 'allHouses' ? (
           <button
             type="button"
             className="item-list__control--refresh btn btn-secondary btn-lg"
