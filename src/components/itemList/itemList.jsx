@@ -81,7 +81,7 @@ export default class ItemList extends Component {
             : null}
         </ul>
 
-        {this.props.dataValue === 'allChars' || 'allHouses' ? (
+        {this.props.dataValue !== 'allBooks' ? (
           <button
             type="button"
             className="item-list__control--refresh btn btn-secondary btn-lg"

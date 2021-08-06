@@ -16,7 +16,7 @@ export default class Api {
   }
 
   getAllBooks = async () => {
-    const data = await this._getDataJSON(`/books/`)
+    const data = await this._getDataJSON(`/books/?page=1&pageSize=20`)
     return data.map(this.adapter.getBook)
   }
 

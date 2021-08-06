@@ -30,13 +30,14 @@ export default class Adapter {
     }
   }
 
-  getBook = ({ url, name, numberOfPages, publisher, released }) => {
+  getBook = ({ url, name, authors, numberOfPages, publisher, released }) => {
     return {
       id: url.match(/\d+$/)[0],
       name,
+      authors: authors.join('\n'),
       numberOfPages,
       publisher,
-      released,
+      released: new Date(released).toLocaleDateString(),
     }
   }
 }
