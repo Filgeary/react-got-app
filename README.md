@@ -9,3 +9,4 @@
 - Fetch API, Adapter
 - Spinner, Error Message patterns
 - Component Lifecycle
+- Basic React patterns
