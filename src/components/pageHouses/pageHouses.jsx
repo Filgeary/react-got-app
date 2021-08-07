@@ -20,10 +20,10 @@ class PageHouses extends Component {
   render() {
     const itemListBlock = (
       <ItemList
+        title="Pick a House"
+        dataValue="allHouses"
         onItemSelected={this.changeHouseIdHandler}
         getData={this.api.getAllHouses}
-        dataValue="allHouses"
-        title="Pick a House"
       />
     )
 

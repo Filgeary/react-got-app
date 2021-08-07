@@ -20,19 +20,19 @@ class PageBooks extends Component {
   render() {
     const itemListBlock = (
       <ItemList
+        title="Pick a Book"
+        dataValue="allBooks"
         onItemSelected={this.changeBookIdHandler}
         getData={this.api.getAllBooks}
-        dataValue="allBooks"
-        title="Pick a Book"
       />
     )
 
     const itemDetailsBlock = (
       <ItemDetails
+        title="Select a Book in the left panel"
+        dataValue="book"
         itemId={this.state.bookId}
         getData={this.api.getBook}
-        dataValue="book"
-        title="Select a Book in left panel"
       >
         <Field field="authors" label="Authors" />
         <Field field="numberOfPages" label="Number&nbsp;Of&nbsp;Pages" />

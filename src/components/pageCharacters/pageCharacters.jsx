@@ -20,7 +20,7 @@ class PageCharacters extends Component {
   render() {
     const itemListBlock = (
       <ItemList
-        title="Pick Hero"
+        title="Pick a Hero"
         dataValue="allChars"
         getData={this.api.getAllCharacters}
         onItemSelected={this.changeCharIdHandler}
@@ -29,7 +29,7 @@ class PageCharacters extends Component {
 
     const itemDetailsBlock = (
       <ItemDetails
-        title="Select Hero in left panel"
+        title="Select a Hero in the left panel"
         dataValue="char"
         itemId={this.state.charId}
         getData={this.api.getCharacter}
