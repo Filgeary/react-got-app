@@ -11,3 +11,4 @@
 - Component Lifecycle
 - Basic React patterns
 - React Router
+- PropTypes & defaultProps
