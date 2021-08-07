@@ -20,19 +20,19 @@ class PageHouses extends Component {
   render() {
     const itemListBlock = (
       <ItemList
+        title="Pick a House"
+        dataValue="allHouses"
         onItemSelected={this.changeHouseIdHandler}
         getData={this.api.getAllHouses}
-        dataValue="allHouses"
-        title="Pick a House"
       />
     )
 
     const itemDetailsBlock = (
       <ItemDetails
+        title="Select a House in the left panel"
+        dataValue="house"
         itemId={this.state.houseId}
         getData={this.api.getHouse}
-        dataValue="house"
-        title="Select a House in left panel"
       >
         <Field field="region" label="Region" />
         <Field field="coatOfArms" label="Coat&nbsp;Of&nbsp;Arms" />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './itemDetails.css'
+import PropTypes from 'prop-types'
 
 // components
 import Spinner from '../spinner/spinner'
@@ -16,6 +17,10 @@ export const Field = ({ item, field, label }) => {
 }
 
 export default class ItemDetails extends Component {
+  static defaultProps = {
+    title: 'Item is not selected',
+  }
+
   state = {
     item: {},
     isLoading: false,
@@ -74,4 +79,12 @@ export default class ItemDetails extends Component {
       </div>
     )
   }
+}
+
+ItemDetails.propTypes = {
+  title: PropTypes.string,
+  dataValue: PropTypes.string.isRequired,
+  itemId: PropTypes.string.isRequired,
+  getData: PropTypes.func.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element.isRequired),
 }
