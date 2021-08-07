@@ -29,10 +29,10 @@ class PageCharacters extends Component {
 
     const itemDetailsBlock = (
       <ItemDetails
+        title="Select Hero in left panel"
+        dataValue="char"
         itemId={this.state.charId}
         getData={this.api.getCharacter}
-        dataValue="char"
-        title="Select a Hero in left panel"
       >
         <Field field="gender" label="Gender" />
         <Field field="born" label="Born" />
