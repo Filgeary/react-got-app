@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './itemList.css'
+import PropTypes from 'prop-types'
 
 // components
 import Spinner from '../spinner/spinner'
@@ -11,6 +12,10 @@ const randomInt = (min, max) => {
 }
 
 export default class ItemList extends Component {
+  static defaultProps = {
+    title: 'Select Item',
+  }
+
   state = {
     itemList: null,
     isLoading: true,
@@ -93,4 +98,11 @@ export default class ItemList extends Component {
       </div>
     )
   }
+}
+
+ItemList.propTypes = {
+  title: PropTypes.string,
+  dataValue: PropTypes.string.isRequired,
+  getData: PropTypes.func.isRequired,
+  onItemSelected: PropTypes.func.isRequired,
 }

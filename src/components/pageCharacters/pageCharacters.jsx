@@ -20,10 +20,10 @@ class PageCharacters extends Component {
   render() {
     const itemListBlock = (
       <ItemList
-        onItemSelected={this.changeCharIdHandler}
-        getData={this.api.getAllCharacters}
+        title="Pick Hero"
         dataValue="allChars"
-        title="Pick a Hero"
+        getData={this.api.getAllCharacters}
+        onItemSelected={this.changeCharIdHandler}
       />
     )
 
