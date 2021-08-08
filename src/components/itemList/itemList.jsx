@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import './itemList.css'
 import PropTypes from 'prop-types'
 
@@ -11,32 +11,32 @@ const randomInt = (min, max) => {
   return Math.floor(number)
 }
 
-export default class ItemList extends Component {
-  static defaultProps = {
-    title: 'Select Item',
+function ItemList({
+  title = 'Select Item',
+  dataValue,
+  getData,
+  onItemSelected,
+}) {
+  const [itemList, setItemList] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
+
+  const itemsLoadedHandler = itemList => {
+    setItemList(itemList)
+    setIsLoading(false)
   }
 
-  state = {
-    itemList: null,
-    isLoading: true,
-    isError: false,
-  }
-
-  itemsLoadedHandler = itemList => {
-    this.setState({ itemList, isLoading: false })
-  }
-
-  errorHandler = err => {
-    this.setState({ isError: true })
+  const errorHandler = err => {
+    setIsError(true)
     console.error(err)
   }
 
-  updateItemsHandler = () => {
-    this.setState({ isLoading: true })
+  const updateItemsHandler = () => {
+    setIsLoading(true)
 
     let query = ''
 
-    switch (this.props.dataValue) {
+    switch (dataValue) {
       case 'allChars':
         query = String(Math.floor(randomInt(1, 1136) / 10))
         break
@@ -47,57 +47,53 @@ export default class ItemList extends Component {
         query = ''
     }
 
-    this.props
-      .getData(query)
-      .then(data => this.itemsLoadedHandler(data))
-      .catch(err => this.errorHandler(err))
+    getData(query)
+      .then(data => itemsLoadedHandler(data))
+      .catch(err => errorHandler(err))
   }
 
-  componentDidMount() {
-    this.updateItemsHandler()
-  }
+  useEffect(() => {
+    updateItemsHandler()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  render() {
-    const { itemList, isLoading, isError } = this.state
+  return (
+    <div className="item-list__wrapper">
+      {isLoading && !isError ? <Spinner /> : null}
+      {isError ? <ErrorMessage /> : null}
 
-    return (
-      <div className="item-list__wrapper">
-        {isLoading && !isError ? <Spinner /> : null}
-        {isError ? <ErrorMessage /> : null}
+      <h3 className="item-list__title">{title}</h3>
+      <ul className="item-list list-group">
+        {itemList.length > 0
+          ? itemList.map(item => {
+              return (
+                <li
+                  className="list-group-item"
+                  tabIndex="0"
+                  key={item.name + item.id}
+                  onClick={() => onItemSelected(item.id)}
+                >
+                  <span>{item.name || 'Unknown'}</span>
+                  <i>
+                    <small>{item.id}</small>
+                  </i>
+                </li>
+              )
+            })
+          : null}
+      </ul>
 
-        <h3 className="item-list__title">{this.props.title}</h3>
-        <ul className="item-list list-group">
-          {itemList
-            ? itemList.map(item => {
-                return (
-                  <li
-                    className="list-group-item"
-                    tabIndex="0"
-                    key={item.name + item.id}
-                    onClick={() => this.props.onItemSelected(item.id)}
-                  >
-                    <span>{item.name || 'Unknown'}</span>
-                    <i>
-                      <small>{item.id}</small>
-                    </i>
-                  </li>
-                )
-              })
-            : null}
-        </ul>
-
-        {this.props.dataValue !== 'allBooks' ? (
-          <button
-            type="button"
-            className="item-list__control--refresh btn btn-secondary btn-lg"
-            onClick={this.updateItemsHandler}
-          >
-            Refresh
-          </button>
-        ) : null}
-      </div>
-    )
-  }
+      {dataValue !== 'allBooks' ? (
+        <button
+          type="button"
+          className="item-list__control--refresh btn btn-secondary btn-lg"
+          onClick={updateItemsHandler}
+        >
+          Refresh
+        </button>
+      ) : null}
+    </div>
+  )
 }
 
 ItemList.propTypes = {
@@ -106,3 +102,5 @@ ItemList.propTypes = {
   getData: PropTypes.func.isRequired,
   onItemSelected: PropTypes.func.isRequired,
 }
+
+export default ItemList
