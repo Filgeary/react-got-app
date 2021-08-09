@@ -12,3 +12,4 @@
 - Basic React patterns
 - React Router
 - PropTypes & defaultProps
+- Basic Hooks: useState, useEffect
