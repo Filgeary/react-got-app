@@ -18,7 +18,6 @@ export const Field = ({ item, field, label }) => {
 
 function ItemDetails({
   title = 'Item is not selected',
-  dataValue,
   itemId,
   getData,
   children,
@@ -69,7 +68,6 @@ function ItemDetails({
 
 ItemDetails.propTypes = {
   title: PropTypes.string,
-  dataValue: PropTypes.string.isRequired,
   itemId: PropTypes.string.isRequired,
   getData: PropTypes.func.isRequired,
   children: PropTypes.arrayOf(PropTypes.element.isRequired),

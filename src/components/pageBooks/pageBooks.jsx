@@ -30,7 +30,6 @@ class PageBooks extends Component {
     const itemDetailsBlock = (
       <ItemDetails
         title="Select a Book in the left panel"
-        dataValue="book"
         itemId={this.state.bookId}
         getData={this.api.getBook}
       >
