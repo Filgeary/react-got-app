@@ -1,88 +1,81 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
+import './randomChar.css'
 import Api from '../../services/api'
+
+// components
 import Spinner from '../spinner/spinner'
 import ErrorMessage from '../errorMessage/errorMessage'
-import './randomChar.css'
 
-export default class RandomChar extends Component {
-  api = new Api()
+function RandomChar() {
+  const [char, setChar] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
 
-  state = {
-    char: {
-      name: 'Unknown',
-      gender: 'Unknown',
-      born: 'Unknown',
-      died: 'Unknown',
-      culture: 'Unknown',
-    },
-    isLoading: true,
-    isError: false,
+  const charLoadedHandler = char => {
+    setChar(char)
+    setIsLoading(false)
   }
 
-  charLoadedHandler = char => {
-    this.setState({ char, isLoading: false })
-  }
-
-  errorHandler = err => {
-    this.setState({ isError: true })
+  const errorHandler = err => {
+    setIsError(true)
     console.error(err)
   }
 
-  updateCharHandler = () => {
+  const updateCharHandler = useCallback(() => {
+    const api = new Api()
     const id = Math.floor(Math.random() * 1150)
-    this.setState({ isLoading: true })
+    setIsLoading(true)
 
-    this.api
+    api
       .getCharacter(id)
-      .then(data => this.charLoadedHandler(data))
-      .catch(err => this.errorHandler(err))
-  }
+      .then(data => charLoadedHandler(data))
+      .catch(err => errorHandler(err))
+  }, [])
 
-  componentDidMount() {
-    this.updateCharHandler()
-  }
+  useEffect(() => {
+    updateCharHandler()
+  }, [updateCharHandler])
 
-  render() {
-    const { name, gender, born, died, culture } = this.state.char
-    const { isLoading, isError } = this.state
+  const { name, gender, born, died, culture } = char
 
-    return (
-      <div className="random-block rounded">
-        {isLoading && !isError ? <Spinner /> : null}
-        {isError ? <ErrorMessage /> : null}
+  return (
+    <div className="random-block rounded">
+      {isLoading && !isError ? <Spinner /> : null}
+      {isError ? <ErrorMessage /> : null}
 
-        <h3 className="random-block__title">
-          Random Character: &nbsp;
-          <i className="random-block__title-name">{name || 'Unknown'}</i>
-        </h3>
+      <h3 className="random-block__title">
+        Random Character: &nbsp;
+        <i className="random-block__title-name">{name || 'Unknown'}</i>
+      </h3>
 
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item d-flex justify-content-between">
-            <span className="term">Gender </span>
-            <span>{gender || 'Unknown'}</span>
-          </li>
-          <li className="list-group-item d-flex justify-content-between">
-            <span className="term">Born </span>
-            <span>{born || 'Unknown'}</span>
-          </li>
-          <li className="list-group-item d-flex justify-content-between">
-            <span className="term">Died </span>
-            <span>{died || 'Unknown'}</span>
-          </li>
-          <li className="list-group-item d-flex justify-content-between">
-            <span className="term">Culture </span>
-            <span>{culture || 'Unknown'}</span>
-          </li>
-        </ul>
+      <ul className="list-group list-group-flush">
+        <li className="list-group-item d-flex justify-content-between">
+          <span className="term">Gender </span>
+          <span>{gender || 'Unknown'}</span>
+        </li>
+        <li className="list-group-item d-flex justify-content-between">
+          <span className="term">Born </span>
+          <span>{born || 'Unknown'}</span>
+        </li>
+        <li className="list-group-item d-flex justify-content-between">
+          <span className="term">Died </span>
+          <span>{died || 'Unknown'}</span>
+        </li>
+        <li className="list-group-item d-flex justify-content-between">
+          <span className="term">Culture </span>
+          <span>{culture || 'Unknown'}</span>
+        </li>
+      </ul>
 
-        <button
-          type="button"
-          className="random-block__control--next-char btn btn-secondary btn-lg"
-          onClick={this.updateCharHandler}
-        >
-          Next Character
-        </button>
-      </div>
-    )
-  }
+      <button
+        type="button"
+        className="random-block__control--next-char btn btn-secondary btn-lg"
+        onClick={updateCharHandler}
+      >
+        Next Character
+      </button>
+    </div>
+  )
 }
+
+export default RandomChar

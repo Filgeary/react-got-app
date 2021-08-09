@@ -30,7 +30,6 @@ class PageCharacters extends Component {
     const itemDetailsBlock = (
       <ItemDetails
         title="Select a Hero in the left panel"
-        dataValue="char"
         itemId={this.state.charId}
         getData={this.api.getCharacter}
       >

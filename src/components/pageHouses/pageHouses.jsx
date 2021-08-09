@@ -30,7 +30,6 @@ class PageHouses extends Component {
     const itemDetailsBlock = (
       <ItemDetails
         title="Select a House in the left panel"
-        dataValue="house"
         itemId={this.state.houseId}
         getData={this.api.getHouse}
       >
