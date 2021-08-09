@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import './itemList.css'
 import PropTypes from 'prop-types'
 
@@ -31,7 +31,7 @@ function ItemList({
     console.error(err)
   }
 
-  const updateItemsHandler = () => {
+  const updateItemsHandler = useCallback(() => {
     setIsLoading(true)
 
     let query = ''
@@ -50,12 +50,11 @@ function ItemList({
     getData(query)
       .then(data => itemsLoadedHandler(data))
       .catch(err => errorHandler(err))
-  }
+  }, [dataValue, getData])
 
   useEffect(() => {
     updateItemsHandler()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [updateItemsHandler])
 
   return (
     <div className="item-list__wrapper">
