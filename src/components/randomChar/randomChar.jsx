@@ -73,10 +73,10 @@ function RandomChar() {
 
       <button
         type="button"
-        className="random-block__control--next-char btn btn-secondary btn-lg"
+        className="random-block__control--random-char btn btn-secondary btn-lg"
         onClick={updateCharHandler}
       >
-        Next Character
+        START
       </button>
     </div>
   )
