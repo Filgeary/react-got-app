@@ -21,8 +21,13 @@
 .random-block .list-group {
   margin-bottom: 20px;
 }
-.term {
+.random-block .term {
+  text-align: left;
   font-weight: bold;
+}
+.random-block .label {
+  text-align: right;
+  white-space: pre-wrap;
 }
 .random-block li {
   border-bottom: 1px solid #007bff;
