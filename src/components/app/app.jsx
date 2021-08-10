@@ -9,6 +9,7 @@ import PageCharacters from '../pageCharacters/pageCharacters'
 import PageHouses from '../pageHouses/pageHouses'
 import PageBooks from '../pageBooks/pageBooks'
 import WelcomeScreen from '../welcomeScreen/welcomeScreen'
+import NotFoundPage from '../notFoundPage/notFoundPage'
 
 const App = () => {
   return (
@@ -28,14 +29,17 @@ const App = () => {
             </Row>
           </Route>
 
-          <Route path="/characters">
+          <Route path="/characters" exact>
             <PageCharacters />
           </Route>
-          <Route path="/houses">
+          <Route path="/houses" exact>
             <PageHouses />
           </Route>
-          <Route path="/books">
+          <Route path="/books" exact>
             <PageBooks />
+          </Route>
+          <Route>
+            <NotFoundPage />
           </Route>
         </Switch>
       </Container>
