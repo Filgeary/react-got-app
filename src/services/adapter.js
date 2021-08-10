@@ -1,12 +1,13 @@
 export default class Adapter {
-  getChar = ({ url, name, gender, born, died, culture }) => {
+  getChar = ({ url, name, gender, culture, born, titles, aliases }) => {
     return {
       id: url.match(/\d+$/)[0],
       name,
       gender,
-      born,
-      died,
       culture,
+      born,
+      titles: titles.join('\n'),
+      aliases: aliases.join('\n'),
     }
   }
 

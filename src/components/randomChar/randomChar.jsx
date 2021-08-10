@@ -36,7 +36,7 @@ function RandomChar() {
     updateCharHandler()
   }, [updateCharHandler])
 
-  const { name, gender, born, died, culture } = char
+  const { name, gender, culture, born, titles, aliases } = char
 
   return (
     <div className="random-block rounded">
@@ -51,28 +51,32 @@ function RandomChar() {
       <ul className="list-group list-group-flush">
         <li className="list-group-item d-flex justify-content-between">
           <span className="term">Gender </span>
-          <span>{gender || 'Unknown'}</span>
-        </li>
-        <li className="list-group-item d-flex justify-content-between">
-          <span className="term">Born </span>
-          <span>{born || 'Unknown'}</span>
-        </li>
-        <li className="list-group-item d-flex justify-content-between">
-          <span className="term">Died </span>
-          <span>{died || 'Unknown'}</span>
+          <span className="label">{gender || 'Unknown'}</span>
         </li>
         <li className="list-group-item d-flex justify-content-between">
           <span className="term">Culture </span>
-          <span>{culture || 'Unknown'}</span>
+          <span className="label">{culture || 'Unknown'}</span>
+        </li>
+        <li className="list-group-item d-flex justify-content-between">
+          <span className="term">Born </span>
+          <span className="label">{born || 'Unknown'}</span>
+        </li>
+        <li className="list-group-item d-flex justify-content-between">
+          <span className="term">Titles </span>
+          <span className="label">{titles || 'Unknown'}</span>
+        </li>
+        <li className="list-group-item d-flex justify-content-between">
+          <span className="term">Aliases </span>
+          <span className="label">{aliases || 'Unknown'}</span>
         </li>
       </ul>
 
       <button
         type="button"
-        className="random-block__control--next-char btn btn-secondary btn-lg"
+        className="random-block__control--random-char btn btn-secondary btn-lg"
         onClick={updateCharHandler}
       >
-        Next Character
+        START
       </button>
     </div>
   )

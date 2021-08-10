@@ -19,6 +19,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   color: #424242;
+
+  background: url('./assets/img/got.jpg') center center no-repeat;
+  background-size: cover;
 }
 
 a,

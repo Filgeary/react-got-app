@@ -1,0 +1,17 @@
+.welcome-screen {
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 12px;
+  padding: 12px;
+  padding-top: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-screen__desc {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-style: italic;
+  text-align: center;
+  color: hsl(0, 0%, 75%);
+}

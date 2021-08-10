@@ -19,14 +19,26 @@
   clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
 }
 .random-block .list-group {
-  margin-bottom: 20px;
+  margin-bottom: 36px;
 }
-.term {
+.random-block .term {
+  text-align: left;
   font-weight: bold;
+}
+.random-block .label {
+  text-align: right;
+  white-space: pre-wrap;
 }
 .random-block li {
   border-bottom: 1px solid #007bff;
 }
-.random-block__control--next-char {
-  margin-left: auto;
+.random-block__control--random-char {
+  position: absolute;
+  z-index: 20;
+  left: calc(50% - 60px);
+  bottom: -60px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50% !important;
+  border: 3px solid #007bff !important;
 }

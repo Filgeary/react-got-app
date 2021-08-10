@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import './header.css'
+import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 const HeaderBlock = styled.div`
@@ -7,10 +8,10 @@ const HeaderBlock = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 80px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 `
 
-const HeaderTitle = styled.h3`
+const HeaderTitle = styled.h1`
   font-size: 24px;
   color: #fff;
   margin: 0;
@@ -18,13 +19,16 @@ const HeaderTitle = styled.h3`
 
 const HeaderLinks = styled.ul`
   display: flex;
+  gap: 8px;
   margin: 0;
   align-items: center;
   color: #fff;
   list-style-type: none;
   li {
-    margin-right: 20px;
     font-size: 18px;
+  }
+  a {
+    padding: 8px 12px;
   }
 `
 
@@ -36,13 +40,19 @@ const Header = () => {
       </HeaderTitle>
       <HeaderLinks>
         <li>
-          <Link to="/characters">Characters</Link>
+          <NavLink to="/characters" activeClassName="header__link--selected">
+            Characters
+          </NavLink>
         </li>
         <li>
-          <Link to="/houses">Houses</Link>
+          <NavLink to="/houses" activeClassName="header__link--selected">
+            Houses
+          </NavLink>
         </li>
         <li>
-          <Link to="/books">Books</Link>
+          <NavLink to="/books" activeClassName="header__link--selected">
+            Books
+          </NavLink>
         </li>
       </HeaderLinks>
     </HeaderBlock>

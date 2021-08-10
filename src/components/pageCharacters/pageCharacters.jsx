@@ -34,9 +34,10 @@ class PageCharacters extends Component {
         getData={this.api.getCharacter}
       >
         <Field field="gender" label="Gender" />
-        <Field field="born" label="Born" />
-        <Field field="died" label="Died" />
         <Field field="culture" label="Culture" />
+        <Field field="born" label="Born" />
+        <Field field="titles" label="Titles" />
+        <Field field="aliases" label="Aliases" />
       </ItemDetails>
     )
 
