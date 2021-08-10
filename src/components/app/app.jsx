@@ -8,6 +8,7 @@ import RandomChar from '../randomChar/randomChar'
 import PageCharacters from '../pageCharacters/pageCharacters'
 import PageHouses from '../pageHouses/pageHouses'
 import PageBooks from '../pageBooks/pageBooks'
+import WelcomeScreen from '../welcomeScreen/welcomeScreen'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Container>
         <Switch>
           <Route path="/" exact>
+            <WelcomeScreen />
             <Row>
               <Col lg={{ size: 8, offset: 2 }}>
                 <RandomChar />
