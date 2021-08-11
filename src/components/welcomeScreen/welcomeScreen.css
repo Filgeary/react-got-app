@@ -9,9 +9,8 @@
 }
 
 .welcome-screen__desc {
-  font-size: 1.6rem;
-  line-height: 2.4rem;
+  font-size: 24px;
   font-style: italic;
   text-align: center;
-  color: hsl(0, 0%, 75%);
+  color: hsl(0, 0%, 80%);
 }
