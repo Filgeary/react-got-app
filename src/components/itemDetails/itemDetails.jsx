@@ -16,12 +16,12 @@ export const Field = ({ item, field, label }) => {
   )
 }
 
-function ItemDetails({
+const ItemDetails = ({
   title = 'Item is not selected',
   itemId,
   getData,
   children,
-}) {
+}) => {
   const [item, setItem] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)

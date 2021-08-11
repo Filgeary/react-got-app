@@ -6,7 +6,7 @@ import Api from '../../services/api'
 import Spinner from '../spinner/spinner'
 import ErrorMessage from '../errorMessage/errorMessage'
 
-function RandomChar() {
+const RandomChar = () => {
   const [char, setChar] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)

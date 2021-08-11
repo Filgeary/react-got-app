@@ -11,12 +11,12 @@ const randomInt = (min, max) => {
   return Math.floor(number)
 }
 
-function ItemList({
+const ItemList = ({
   title = 'Select Item',
   dataValue,
   getData,
   onItemSelected,
-}) {
+}) => {
   const [itemList, setItemList] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
