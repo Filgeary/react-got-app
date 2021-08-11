@@ -6,6 +6,7 @@
   padding: 30px;
   background-color: #fff;
   border-top: 5px solid #007bff;
+  box-shadow: 15px 15px 15px 5px rgba(0, 0, 0, 0.15);
 }
 .random-block__title {
   margin-bottom: 20px;
