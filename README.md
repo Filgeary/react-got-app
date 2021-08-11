@@ -4,6 +4,8 @@
 >
 > React training-project from udemy course
 
+## Preview
+
 ![preview-image](./preview.webp)
 
 ## What I've learned
