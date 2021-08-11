@@ -6,6 +6,8 @@
 
 ## Preview
 
+[Link | React-GOT-app on Netlify](https://peaceful-kepler-ab02e0.netlify.app/)
+
 ![preview-image](./preview.webp)
 
 ## What I've learned
