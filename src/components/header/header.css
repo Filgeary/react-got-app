@@ -1,3 +1,36 @@
+.header {
+  width: 100%;
+}
+
+.header__block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px;
+  margin-bottom: 12px;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 24px;
+  color: #fff;
+}
+
+.header__list {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  align-items: center;
+  list-style-type: none;
+  font-size: 18px;
+  color: #fff;
+}
+
+.header__list a {
+  padding: 8px 12px;
+}
+
 .header__link--selected {
   border-bottom: 3px solid #6c757d;
 }

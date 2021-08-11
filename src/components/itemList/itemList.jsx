@@ -1,22 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import './itemList.css'
 import PropTypes from 'prop-types'
+import { randomInt } from '../../utils/utils'
 
 // components
 import Spinner from '../spinner/spinner'
 import ErrorMessage from '../errorMessage/errorMessage'
 
-const randomInt = (min, max) => {
-  const number = min + Math.random() * (max + 1 - min)
-  return Math.floor(number)
-}
-
-function ItemList({
+const ItemList = ({
   title = 'Select Item',
   dataValue,
   getData,
   onItemSelected,
-}) {
+}) => {
   const [itemList, setItemList] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
@@ -24,6 +20,7 @@ function ItemList({
   const itemsLoadedHandler = itemList => {
     setItemList(itemList)
     setIsLoading(false)
+    setIsError(false)
   }
 
   const errorHandler = err => {
@@ -35,13 +32,14 @@ function ItemList({
     setIsLoading(true)
 
     let query = ''
+    const pageSizeCount = 10
 
     switch (dataValue) {
       case 'allChars':
-        query = String(Math.floor(randomInt(1, 1136) / 10))
+        query = String(Math.floor(randomInt(1, 1136) / pageSizeCount))
         break
       case 'allHouses':
-        query = String(Math.floor(randomInt(1, 444) / 10))
+        query = String(Math.floor(randomInt(1, 444) / pageSizeCount))
         break
       default:
         query = ''
@@ -57,7 +55,7 @@ function ItemList({
   }, [updateItemsHandler])
 
   return (
-    <div className="item-list__wrapper">
+    <section className="item-list__wrapper">
       {isLoading && !isError ? <Spinner /> : null}
       {isError ? <ErrorMessage /> : null}
 
@@ -91,7 +89,7 @@ function ItemList({
           Refresh
         </button>
       ) : null}
-    </div>
+    </section>
   )
 }
 

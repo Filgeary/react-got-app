@@ -16,12 +16,12 @@ export const Field = ({ item, field, label }) => {
   )
 }
 
-function ItemDetails({
+const ItemDetails = ({
   title = 'Item is not selected',
   itemId,
   getData,
   children,
-}) {
+}) => {
   const [item, setItem] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
@@ -49,7 +49,7 @@ function ItemDetails({
   const titleClass = !item.name ? 'item-details__title--unselected' : ''
 
   return (
-    <div className="item-details rounded">
+    <section className="item-details rounded">
       {isLoading && !isError ? <Spinner /> : null}
       {isError ? <ErrorMessage /> : null}
 
@@ -62,7 +62,7 @@ function ItemDetails({
           return React.cloneElement(child, { item })
         })}
       </ul>
-    </div>
+    </section>
   )
 }
 

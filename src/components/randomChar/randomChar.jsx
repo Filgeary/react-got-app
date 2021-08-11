@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import './randomChar.css'
 import Api from '../../services/api'
+import { randomInt } from '../../utils/utils'
 
 // components
 import Spinner from '../spinner/spinner'
 import ErrorMessage from '../errorMessage/errorMessage'
 
-function RandomChar() {
+// define separately
+const api = new Api()
+
+const RandomChar = () => {
   const [char, setChar] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
@@ -14,6 +18,7 @@ function RandomChar() {
   const charLoadedHandler = char => {
     setChar(char)
     setIsLoading(false)
+    setIsError(false)
   }
 
   const errorHandler = err => {
@@ -22,8 +27,7 @@ function RandomChar() {
   }
 
   const updateCharHandler = useCallback(() => {
-    const api = new Api()
-    const id = Math.floor(Math.random() * 1150)
+    const id = String(randomInt(1, 1150))
     setIsLoading(true)
 
     api
@@ -39,7 +43,7 @@ function RandomChar() {
   const { name, gender, culture, born, titles, aliases } = char
 
   return (
-    <div className="random-block rounded">
+    <section className="random-block rounded">
       {isLoading && !isError ? <Spinner /> : null}
       {isError ? <ErrorMessage /> : null}
 
@@ -78,7 +82,7 @@ function RandomChar() {
       >
         START
       </button>
-    </div>
+    </section>
   )
 }
 
