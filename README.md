@@ -6,7 +6,7 @@
 
 ## Preview
 
-[Link | React-GOT-app on Netlify](https://peaceful-kepler-ab02e0.netlify.app/)
+[Link | React-GOT-app on Netlify](https://filgeary-react-got-app.netlify.app/)
 
 ![preview-image](./preview.webp)
 
