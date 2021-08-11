@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import './randomChar.css'
 import Api from '../../services/api'
+import { randomInt } from '../../utils/utils'
 
 // components
 import Spinner from '../spinner/spinner'
@@ -26,7 +27,7 @@ const RandomChar = () => {
   }
 
   const updateCharHandler = useCallback(() => {
-    const id = Math.floor(Math.random() * 1150)
+    const id = String(randomInt(1, 1150))
     setIsLoading(true)
 
     api

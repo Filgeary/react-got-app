@@ -1,15 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import './itemList.css'
 import PropTypes from 'prop-types'
+import { randomInt } from '../../utils/utils'
 
 // components
 import Spinner from '../spinner/spinner'
 import ErrorMessage from '../errorMessage/errorMessage'
-
-const randomInt = (min, max) => {
-  const number = min + Math.random() * (max + 1 - min)
-  return Math.floor(number)
-}
 
 const ItemList = ({
   title = 'Select Item',
