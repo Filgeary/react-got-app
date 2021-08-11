@@ -19,7 +19,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #424242;
 
-  background: url('./assets/img/got.jpg') center center no-repeat;
+  background: url('./assets/img/got-main-bg.jpg') center center no-repeat;
   background-size: cover;
 }
 
