@@ -14,6 +14,7 @@ function RandomChar() {
   const charLoadedHandler = char => {
     setChar(char)
     setIsLoading(false)
+    setIsError(false)
   }
 
   const errorHandler = err => {
