@@ -20,6 +20,7 @@ const ItemList = ({
   const itemsLoadedHandler = itemList => {
     setItemList(itemList)
     setIsLoading(false)
+    setIsError(false)
   }
 
   const errorHandler = err => {
@@ -31,13 +32,14 @@ const ItemList = ({
     setIsLoading(true)
 
     let query = ''
+    const pageSizeCount = 10
 
     switch (dataValue) {
       case 'allChars':
-        query = String(Math.floor(randomInt(1, 1136) / 10))
+        query = String(Math.floor(randomInt(1, 1136) / pageSizeCount))
         break
       case 'allHouses':
-        query = String(Math.floor(randomInt(1, 444) / 10))
+        query = String(Math.floor(randomInt(1, 444) / pageSizeCount))
         break
       default:
         query = ''
