@@ -1,7 +1,7 @@
 # React-GOT-app
 
-> This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
->
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c266eafc-4be2-47f9-9a79-cec0783a09b0/deploy-status)](https://app.netlify.com/sites/filgeary-react-got-app/deploys)
+
 > React training-project from udemy course
 
 ## Preview
