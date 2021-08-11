@@ -49,7 +49,7 @@ const ItemDetails = ({
   const titleClass = !item.name ? 'item-details__title--unselected' : ''
 
   return (
-    <div className="item-details rounded">
+    <section className="item-details rounded">
       {isLoading && !isError ? <Spinner /> : null}
       {isError ? <ErrorMessage /> : null}
 
@@ -62,7 +62,7 @@ const ItemDetails = ({
           return React.cloneElement(child, { item })
         })}
       </ul>
-    </div>
+    </section>
   )
 }
 

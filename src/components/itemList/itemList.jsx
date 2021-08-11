@@ -55,7 +55,7 @@ const ItemList = ({
   }, [updateItemsHandler])
 
   return (
-    <div className="item-list__wrapper">
+    <section className="item-list__wrapper">
       {isLoading && !isError ? <Spinner /> : null}
       {isError ? <ErrorMessage /> : null}
 
@@ -89,7 +89,7 @@ const ItemList = ({
           Refresh
         </button>
       ) : null}
-    </div>
+    </section>
   )
 }
 

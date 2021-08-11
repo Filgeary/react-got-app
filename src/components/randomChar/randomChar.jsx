@@ -43,7 +43,7 @@ const RandomChar = () => {
   const { name, gender, culture, born, titles, aliases } = char
 
   return (
-    <div className="random-block rounded">
+    <section className="random-block rounded">
       {isLoading && !isError ? <Spinner /> : null}
       {isError ? <ErrorMessage /> : null}
 
@@ -82,7 +82,7 @@ const RandomChar = () => {
       >
         START
       </button>
-    </div>
+    </section>
   )
 }
 
