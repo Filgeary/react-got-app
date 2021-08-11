@@ -6,6 +6,9 @@ import Api from '../../services/api'
 import Spinner from '../spinner/spinner'
 import ErrorMessage from '../errorMessage/errorMessage'
 
+// define separately
+const api = new Api()
+
 const RandomChar = () => {
   const [char, setChar] = useState({})
   const [isLoading, setIsLoading] = useState(false)
@@ -23,7 +26,6 @@ const RandomChar = () => {
   }
 
   const updateCharHandler = useCallback(() => {
-    const api = new Api()
     const id = Math.floor(Math.random() * 1150)
     setIsLoading(true)
 
