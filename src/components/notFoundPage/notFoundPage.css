@@ -1,4 +1,14 @@
 .not-found-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin: 0 auto;
+  padding: 20px 0;
+  width: 100%;
+  max-width: 800px;
+}
+
+.not-found-page__desc-wrap {
   position: relative;
   display: flex;
   margin: 0 auto;
@@ -21,4 +31,9 @@
   margin-top: auto;
   margin-bottom: 40px;
   justify-content: center;
+}
+
+.not-found-page__control--home {
+  font-size: 22px !important;
+  margin: auto;
 }
